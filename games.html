@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Ігри PyStep</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+    
+      /* 🖼 Зображення як фон */
+      background: url("налаштування.jpg") no-repeat center center fixed;
+      background-size: cover;
+    
+      color: #fff;
+    }
+    
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+    }
+
+    .games-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .game-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+
+    .game-card img {
+      width: 50%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .game-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .play-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      background: white;
+      color: #1b5e20;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .play-btn:hover {
+      background: #c8ffc8;
+    }
+
+    .back {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .back a {
+      color: #e0f7d4;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .back a:hover {
+      background: rgba(255,255,255,0.3);
+      color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Ігри PyStep</h1>
+
+  <div class="games-container">
+
+    <div class="game-card">
+      <img src="snake.png" alt="Snake">
+      <h2>Snake</h2>
+      <p>Класична змійка</p>
+      <button class="play-btn" onclick="location.href='snake.html'">▶ Грати</button>
+    </div>
+
+    <div class="game-card">
+      <img src="shooter.png" alt="Space Shooter">
+      <h2>Space Shooter</h2>
+      <p>Космічна стрілялка</p>
+      <button class="play-btn" onclick="location.href='shooter.html'">▶ Грати</button>
+    </div>
+
+    <div class="game-card">
+      <img src="memory.png" alt="Memory Game">
+      <h2>Memory Game</h2>
+      <p>Гра на запам'ятовування</p>
+      <button class="play-btn" onclick="location.href='memory.html'">▶ Грати</button>
+    </div>
+
+    <div class="game-card">
+      <img src="2048.png" alt="2048">
+      <h2>2048</h2>
+      <p>Логічна головоломка</p>
+      <button class="play-btn" onclick="location.href='2048.html'">▶ Грати</button>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <a href="menu.html">← Назад до меню</a>
+  </div>
+
+</body>
+</html>

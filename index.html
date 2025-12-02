@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід / Реєстрація</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      background: url("логін.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .form-box {
+      background-color: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: rgba(255,255,255,0.2);
+      color: #fff;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    input::placeholder {
+      color: #cceccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #2e7d32, #43a047);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+    
+    button:hover {
+      background: linear-gradient(to right, #1b5e20, #388e3c);
+      transform: scale(1.03);
+    }
+
+    .msg {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgba(255,255,255,0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .msg.success { color: #c8facc; }
+    .msg.error { color: #ffcccc; }
+
+    @media (max-width: 480px) {
+      .form-box {
+        padding: 30px 20px;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>👤 Вхід або Реєстрація</h2>
+
+    <input type="text" id="username" placeholder="Ім’я користувача">
+    <input type="password" id="password" placeholder="Пароль">
+
+    <button onclick="register()">Зареєструватися</button>
+    <button onclick="login()">Увійти</button>
+
+    <div id="message" class="msg"></div>
+  </div>
+
+  <script>
+    function showMessage(text, type) {
+      const msg = document.getElementById('message');
+      msg.textContent = text;
+      msg.className = 'msg ' + type;
+    }
+
+    function register() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      if (!user || !pass) {
+        showMessage("⚠️ Заповни всі поля!", "error");
+        return;
+      }
+      if (localStorage.getItem("user_" + user)) {
+        showMessage("❌ Такий користувач вже існує!", "error");
+      } else {
+        localStorage.setItem("user_" + user, pass);
+        localStorage.setItem("loggedUser", user);
+        for (let key in localStorage) {
+          if (key.startsWith("lesson") || key.startsWith("level2_lesson")) {
+            localStorage.removeItem(key);
+          }
+        }
+        showMessage("✅ Реєстрація успішна! Тепер увійди.", "success");
+      }
+    }
+
+    function login() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const savedPass = localStorage.getItem("user_" + user);
+
+      if (savedPass && savedPass === pass) {
+        localStorage.setItem("loggedUser", user);
+        showMessage("✅ Вхід успішний!", "success");
+        setTimeout(() => {
+          window.location.href = "menu.html";
+        }, 1000);
+      } else {
+        showMessage("❌ Невірний логін або пароль!", "error");
+      }
+    }
+  </script>
+
+</body>
+</html>

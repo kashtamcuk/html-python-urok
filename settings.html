@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Налаштування</title>
+    <link rel="stylesheet" href="global.css">
+    <script src="font.js" defer></script>
+</head>
+<body>
+    <h1>Налаштування PyStep</h1>
+    <p>Тут будуть опції змінення профілю, теми, мови тощо.</p>
+
+    <div class="slider-box">
+        <label for="weightRange">Товщина шрифту: <span id="weightValue">400</span></label><br>
+        <input type="range" id="weightRange" min="100" max="900" step="100" value="400">
+    </div>
+
+    <div class="back">
+        <a href="menu.html">← Назад до прогресу Модуля 1</a>
+    </div>
+
+    <script>
+        const slider = document.getElementById("weightRange");
+        const valueText = document.getElementById("weightValue");
+
+        // Завантажуємо збережене значення
+        const savedWeight = localStorage.getItem("globalFontWeight");
+        if (savedWeight) {
+            slider.value = savedWeight;
+            valueText.textContent = savedWeight;
+        }
+
+        // Коли рухаємо повзунок
+        slider.addEventListener("input", () => {
+            const weight = slider.value;
+            document.documentElement.style.setProperty("--global-weight", weight);
+            valueText.textContent = weight;
+
+            // Зберігаємо у localStorage для всіх сторінок
+            localStorage.setItem("globalFontWeight", weight);
+        });
+    </script>
+</body>
+</html>

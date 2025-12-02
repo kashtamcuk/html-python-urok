@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин PyStep</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        
+            /* 🖼 Зображення як фон */
+            background: url("налаштування.jpg") no-repeat center center fixed;
+            background-size: cover;
+        
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* 🔥 Новий стиль для балансу */
+        .balance {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .shop-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #e0f7d4;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            vertical-align: middle;
+        }
+
+        th {
+            font-size: 1.2rem;
+        }
+
+        .product-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .buy-btn {
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: none;
+            color: #e0f7d4;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .buy-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: 0.3s;
+            border-radius: 12px;
+        }
+
+        .buy-btn:hover::after {
+            width: 100%;
+        }
+
+        .buy-btn:hover {
+            color: #1b5e20;
+            font-size: 1.05rem;
+        }
+
+        a.back {
+            display: inline-block;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 12px;
+            color: #e0f7d4;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        a.back::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            transition: 0.3s;
+            border-radius: 12px;
+        }
+
+        a.back:hover::after {
+            width: 100%;
+        }
+
+        a.back:hover {
+            color: #1b5e20;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🛒 Магазин PyStep</h1>
+
+    <!-- 🔥 Баланс додано тут -->
+    <div class="balance">Баланс: <span id="balance">150₴</span></div>
+
+    <div class="shop-container">
+
+        <table>
+            <tr>
+                <th>Фото</th>
+                <th>Товар</th>
+                <th>Ціна</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td><img class="product-img" src="браслети.png" alt="Товар"></td>
+                <td>браслети</td>
+                <td>10₴</td>
+                <td><button class="buy-btn">Купити</button></td>
+            </tr>
+
+            <tr>
+                <td><img class="product-img" src="коврик_для_мишки.png" alt="Товар"></td>
+                <td>коврик для мишки</td>
+                <td>55₴</td>
+                <td><button class="buy-btn">Купити</button></td>
+            </tr>
+
+            <tr>
+                <td><img class="product-img" src="брилок.png" alt="Товар"></td>
+                <td>брилок</td>
+                <td>40₴</td>
+                <td><button class="buy-btn">Купити</button></td>
+            </tr>
+
+            <tr>
+                <td><img class="product-img" src="термоз.png" alt="Товар"></td>
+                <td>термоз</td>
+                <td>85₴</td>
+                <td><button class="buy-btn">Купити</button></td>
+            </tr>
+
+        </table>
+
+        <a class="back" href="menu.html">⬅ Повернутися</a>
+
+    </div>
+
+</body>
+</html>
